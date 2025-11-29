@@ -1,0 +1,217 @@
+/* ====== Base ====== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #16324f, #050b14 60%);
+  color: #f8f8f8;
+}
+
+/* Pour lecture des chapitres */
+.page-chapitre {
+  padding: 20px 15px 40px;
+}
+
+/* ====== Accueil / calendrier ====== */
+
+.header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  font-size: 1.9rem;
+}
+
+.sous-titre {
+  margin: 0;
+  color: #d0e6ff;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.intro {
+  max-width: 700px;
+  margin: 20px auto 30px;
+  padding: 0 20px;
+  color: #e2f1ff;
+  text-align: center;
+}
+
+.calendrier-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 15px 40px;
+}
+
+.calendrier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Cases */
+
+.case {
+  position: relative;
+  background: linear-gradient(145deg, #1d4058, #132433);
+  border-radius: 14px;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.case:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+  background: linear-gradient(145deg, #245474, #16324f);
+}
+
+.case .numero {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.case .titre-case {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+/* Badge compteur en haut à droite */
+
+.case .badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.75rem;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Case bloquée (jour pas encore arrivé) */
+
+.case.bloque {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.case.bloque:hover {
+  transform: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Cases vides */
+
+.case.vide {
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed rgba(255,255,255,0.25);
+  box-shadow: none;
+  cursor: default;
+}
+
+.case.vide:hover {
+  transform: none;
+}
+
+/* ====== Footer ====== */
+
+.footer {
+  text-align: center;
+  padding: 15px 10px 25px;
+  font-size: 0.85rem;
+  color: #98b4d6;
+}
+
+/* ====== Pages chapitre ====== */
+
+.page-chapitre header {
+  max-width: 800px;
+  margin: 0 auto 15px;
+}
+
+.page-chapitre .retour {
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #a7d5ff;
+  font-size: 0.9rem;
+}
+
+.page-chapitre .retour:hover {
+  text-decoration: underline;
+}
+
+.page-chapitre h1 {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+}
+
+.page-chapitre .chap-sous-titre {
+  margin: 0 0 15px;
+  color: #d0e6ff;
+  font-size: 0.95rem;
+}
+
+.texte-chapitre {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.45);
+  padding: 20px 18px 30px;
+  border-radius: 14px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* paragraphe lisible */
+.texte-chapitre p {
+  margin: 0 0 12px;
+}
+
+/* dialogues en léger retrait */
+.texte-chapitre p.dialogue {
+  margin-left: 10px;
+}
+
+/* sous-titres dans un chapitre (ex: “Le camp”, “Le petit déj’” etc.) */
+.texte-chapitre h2,
+.texte-chapitre h3 {
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+/* ====== Responsive ====== */
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.4rem;
+  }
+  .sous-titre {
+    font-size: 0.9rem;
+  }
+  .calendrier {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .case {
+    min-height: 90px;
+  }
+  .texte-chapitre {
+    padding: 16px 14px 24px;
+    font-size: 0.95rem;
+  }
+}
