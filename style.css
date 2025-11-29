@@ -215,3 +215,13 @@ body {
     font-size: 0.95rem;
   }
 }
+
+
+  .guide {
+  background: rgba(255,255,255,0.08);
+  border-left: 3px solid #a7d5ff;
+  padding: 10px 14px;
+  margin: 12px 0;
+  color: #ffffff;
+  font-style: italic;
+}
