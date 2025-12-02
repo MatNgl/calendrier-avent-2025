@@ -225,8 +225,10 @@ body {
   color: #ffffff;
   font-style: italic;
 }
+
+
 /* ========================= */
-/* ===== THEME NOËL PRO 🎄 == */
+/* ===== THEME NOËL PRO ✅ == */
 /* ========================= */
 
 body {
@@ -260,7 +262,7 @@ body > * {
   z-index: 1;
 }
 
-/* 🎄 HEADER NOËL */
+/* 🎄 HEADER */
 .header {
   background: linear-gradient(180deg, #9e0000, #5a0000);
   border-bottom: 3px solid gold;
@@ -276,7 +278,6 @@ body > * {
   color: #ffe08a;
 }
 
-/* ✨ GUIRLANDE */
 .header::after {
   content: "✨ 🎄 ✨ 🎁 ✨ 🎄 ✨ 🎁 ✨";
   display: block;
@@ -300,93 +301,105 @@ body > * {
   border-radius: 14px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* BRILLANCE LÉGÈRE – NE PAS MASQUER LE TEXTE */
+/* Brillance en fond */
 .case::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 60%);
-  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.18), transparent 60%);
+  z-index: 0;
 }
 
-.case:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.7);
-  background: linear-gradient(145deg, #e00000, #8a0000);
+/* Ruban SOUS le texte */
+.case::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, gold, #d4af37);
+  transform: translateX(-50%);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.case .numero,
+.case .titre-case {
+  position: relative;
+  z-index: 2;
 }
 
 .case .numero {
   color: gold;
   font-size: 1.6rem;
   text-shadow: 0 0 6px black;
-  z-index: 2;
 }
 
 .case .titre-case {
   color: #fff1c1;
-  z-index: 2;
+}
+
+.case:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #e00000, #8a0000);
 }
 
 /* ========================= */
-/* ❄️ CASES FUTURES (BLOQUÉES) */
-/* ========================= */
-
-.case.bloque {
-  background: linear-gradient(145deg, #2a2a2a, #151515);
-  border: 2px solid #aaa;
-  opacity: 1;
-  animation: pulse 1.8s infinite alternate;
-  cursor: not-allowed;
-}
-
-.case.bloque .numero,
-.case.bloque .titre-case {
-  color: #ddd;
-  text-shadow: none;
-}
-
-@keyframes pulse {
-  from { box-shadow: 0 0 6px rgba(255,255,255,0.2); }
-  to { box-shadow: 0 0 16px rgba(255,255,255,0.4); }
-}
-
-/* ========================= */
-/* ⬛ CASES VIDES (TRÈS SOMBRES) */
+/* ⬛ CASES VIDES */
 /* ========================= */
 
 .case.vide {
-  background: linear-gradient(145deg, #0b0b0b, #000000);
+  background: linear-gradient(145deg, #0b0b0b, #000);
   border: 1px dashed rgba(255,255,255,0.2);
-  box-shadow: none;
   opacity: 0.35;
 }
 
-.case.vide .numero {
-  color: #777;
-}
-
-.case.vide:hover {
-  transform: none;
+.case.vide::before,
+.case.vide::after {
+  display: none;
 }
 
 /* ========================= */
-/* 📖 CHAPITRES VERSION NOËL */
+/* ❄️ CASES BLOQUÉES */
+/* ========================= */
+
+.case.bloque {
+  background: linear-gradient(145deg, #1f1f1f, #0d0d0d);
+  border: 2px solid #cfd8dc;
+  opacity: 0.9;
+  cursor: not-allowed;
+  animation: glowBloque 1.6s infinite alternate;
+}
+
+.case.bloque .numero {
+  color: #e0f7ff;
+  text-shadow: 0 0 8px rgba(180,220,255,0.8);
+}
+
+.case.bloque .titre-case {
+  color: #cfd8dc;
+}
+
+@keyframes glowBloque {
+  from { box-shadow: 0 0 6px rgba(180,220,255,0.4); }
+  to { box-shadow: 0 0 18px rgba(180,220,255,0.8); }
+}
+
+/* ========================= */
+/* 📖 CHAPITRES */
 /* ========================= */
 
 .texte-chapitre {
   background: rgba(45, 10, 10, 0.85);
   border: 2px solid gold;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
 }
 
-/* Encadré guide */
 .guide {
   background: rgba(255, 215, 150, 0.12);
   border-left: 3px solid gold;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
 }
 
 /* ========================= */
@@ -397,6 +410,7 @@ body > * {
   color: #ffe08a;
   text-shadow: 0 0 5px black;
 }
+
 
 /* ========================= */
 /* 📱 MOBILE FIRST */
